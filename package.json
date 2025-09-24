@@ -1,6 +1,6 @@
 {
   "name": "@nestjs/cli",
-  "version": "11.0.10",
+  "version": "11.1.00-Prerelease-02",
   "description": "Nest - modern, fast, powerful node.js web framework (@cli)",
   "publishConfig": {
     "access": "public"
@@ -42,6 +42,7 @@
     "@angular-devkit/schematics": "19.2.15",
     "@angular-devkit/schematics-cli": "19.2.15",
     "@inquirer/prompts": "7.8.0",
+    "@magda/tree-kill": "^1.2.3",
     "@nestjs/schematics": "^11.0.1",
     "ansis": "4.1.0",
     "chokidar": "4.0.3",
@@ -51,7 +52,6 @@
     "glob": "11.0.3",
     "node-emoji": "1.11.0",
     "ora": "5.4.1",
-    "tree-kill": "1.2.2",
     "tsconfig-paths": "4.2.0",
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.8.3",
