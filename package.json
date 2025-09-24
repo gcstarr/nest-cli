@@ -1,6 +1,6 @@
 {
   "name": "@nestjs/cli",
-  "version": "11.0.10",
+  "version": "11.1.0-Prerelease-01",
   "description": "Nest - modern, fast, powerful node.js web framework (@cli)",
   "publishConfig": {
     "access": "public"
@@ -51,7 +51,6 @@
     "glob": "11.0.3",
     "node-emoji": "1.11.0",
     "ora": "5.4.1",
-    "tree-kill": "1.2.2",
     "tsconfig-paths": "4.2.0",
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "typescript": "5.8.3",
