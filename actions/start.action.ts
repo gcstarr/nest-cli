@@ -2,7 +2,6 @@ import { red } from 'ansis';
 import { spawn } from 'child_process';
 import * as fs from 'fs';
 import { join } from 'path';
-import * as killProcess from 'tree-kill';
 import { Input } from '../commands';
 import { getTscConfigPath } from '../lib/compiler/helpers/get-tsc-config.path';
 import { getValueOrDefault } from '../lib/compiler/helpers/get-value-or-default';
@@ -11,7 +10,7 @@ import {
   defaultOutDir,
 } from '../lib/configuration/defaults';
 import { ERROR_PREFIX } from '../lib/ui';
-import { treeKillSync as killProcessSync } from '../lib/utils/tree-kill';
+import killProcessTree from '../lib/utils/tree-kill';
 import { BuildAction } from './build.action';
 import { assertNonArray } from '../lib/utils/type-assertions';
 
@@ -129,7 +128,7 @@ export class StartAction extends BuildAction {
     let childProcessRef: any;
     process.on(
       'exit',
-      () => childProcessRef && killProcessSync(childProcessRef.pid),
+      () => childProcessRef && killProcessTree(childProcessRef.pid),
     );
 
     return () => {
@@ -151,7 +150,7 @@ export class StartAction extends BuildAction {
         });
 
         childProcessRef.stdin && childProcessRef.stdin.pause();
-        killProcess(childProcessRef.pid);
+        killProcessTree(childProcessRef.pid);
       } else {
         childProcessRef = this.spawnChildProcess(
           entryFile,

@@ -8,7 +8,6 @@ import { isAbsolute, join } from 'path';
 import * as ts from 'typescript';
 import { Configuration } from '../../configuration';
 import { ERROR_PREFIX } from '../../ui';
-import { treeKillSync } from '../../utils/tree-kill';
 import { AssetsManager } from '../assets-manager';
 import { BaseCompiler } from '../base-compiler';
 import { swcDefaultsFactory } from '../defaults/swc-defaults';
@@ -21,6 +20,7 @@ import {
   SWC_LOG_PREFIX,
 } from './constants';
 import { TypeCheckerHost } from './type-checker-host';
+import killProcessTree from '../../utils/tree-kill';
 
 export type SwcCompilerExtras = {
   watch: boolean;
@@ -100,7 +100,7 @@ export class SwcCompiler extends BaseCompiler {
       );
       process.on(
         'exit',
-        () => childProcessRef && treeKillSync(childProcessRef.pid!),
+        () => childProcessRef && killProcessTree(childProcessRef.pid!),
       );
     } else {
       const { readonlyVisitors } = this.loadPlugins(
